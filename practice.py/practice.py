@@ -1,3 +1,5 @@
+
+
 import time
 
 print("Welcome to the retail chatbot.")
@@ -110,7 +112,7 @@ while True:
             print(f"{item} - {stock} left | {status}")
             time.sleep(0.3)
         print("----------------------------------------")
-        print(" More styles arriving soon!\n")
+        print("✨ More styles arriving soon!\n")
         input("Press Enter to return to the menu...")
 
     # OPTION 6 - EXIT
@@ -122,4 +124,3 @@ while True:
     else:
         print("\n Invalid choice. Please enter a number between 1 and 6.\n")
         time.sleep(1)
-
