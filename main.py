@@ -1,3 +1,4 @@
+#retailer chatbot 
 import time
 
 print("Welcome to the retail chatbot.")
@@ -16,7 +17,7 @@ inventory = {
 }
 
 # A list to simulate "purchased" items (you can pretend the user bought these)
-purchased_items = ["These are the items you have purchased: grey sweatpants", "grey sweatshirt", "jordan 1's"]
+purchased_items = ["grey sweatpants", "grey sweatshirt", "jordan 1's"]
 print(purchased_items)
 while True:
     print()
@@ -38,9 +39,9 @@ while True:
         item_name = input("which item would you like to return from your purchased list? ")
 
         if item_name in purchased_items:
-            reason = input("Why are you returning it? (e.g., too big, you don't like it): ")
-            print("\nProcessing your return request, this will be just a minute")
-            time.sleep(2)
+            reason = input("Why are you returning it? (too big, you don't like it): ")
+            print("Processing your return request, this will be just a minute")
+            time.sleep(.5)
             purchased_items.remove(item_name) # remove the item from your purchased list
             inventory[item_name] = inventory.get(item_name, 0) + 1  # put it back in stock in the inentory
             print(f"\nThank you, {name}! Your return for '{item_name}' has been processed.")
@@ -70,56 +71,55 @@ while True:
             else:
                 print(f"\nSorry, '{new_item}' is currently out of stock.\n")
         else:
-            print(f"\nYou haven’t purchased '{old_item}', so we can’t process an exchange.\n")
+            print("We have not recieved anything regarding your purchase")
 
-    # OPTION 3 - RETURN POLICY
+    #return policy
     elif user_choice == "3":
         print("\nTRENDY THREADS RETURN POLICY")
         print("----------------------------------------")
         print("• Items can be returned within 30 days of delivery.")
         print("• Items must be unworn, unwashed, and in their original packaging.")
-        print("• Refunds are processed within 3–5 business days after inspection.")
+        print("• Refunds are processed within 2 to 3 business days after inspection.")
         print("• First exchanges are free — additional ones may include shipping costs.")
         print("•  Clearance or final sale items cannot be returned or exchanged.\n")
         input("Press Enter to go back to the main menu...")
 
     # OPTION 4 - REQUEST A REFUND
     elif user_choice == "4":
-        print("\n💳 REQUEST A REFUND")
-        name = input(" What’s your full name? ")
-        email = input(" What’s your email address? ")
+        print("Request a refund")
+        name = input(" What is your full name? ")
+        email = input(" What is your email address? ")
         item_name = input("Which item are you requesting a refund for? ")
 
         if item_name in purchased_items:
-            refund_reason = input("❓ Please explain why you’d like a refund: ")
-            print("\nSubmitting your refund request...")
+            refund_reason = input(" Why would you like a refund: ")
+            print("We are submitting your request for a refund...")
             time.sleep(2)
             purchased_items.remove(item_name)
             inventory[item_name] = inventory.get(item_name, 0) + 1
-            print(f"\n Refund approved for '{item_name}', {name}.")
+            print("Your refund has been approved")
             print(f"A confirmation has been sent to {email}. The item was added back to inventory.\n")
         else:
             print(f"\n'{item_name}' was not found in your purchase history, so a refund can’t be processed.\n")
 
-    # OPTION 5 - VIEW INVENTORY
+    #view inventory
     elif user_choice == "5":
-        print("\n CURRENT INVENTORY")
+        print("Inventory list")
         print("----------------------------------------")
         for item, stock in inventory.items():
             status = " In Stock" if stock > 0 else "Out of Stock"
             print(f"{item} - {stock} left | {status}")
             time.sleep(0.3)
         print("----------------------------------------")
-        print(" More styles arriving soon!\n")
         input("Press Enter to return to the menu...")
 
     # OPTION 6 - EXIT
     elif user_choice == "6":
-        print("\n Thank you for visiting Trendy Threads!")
-        print("We appreciate your business and hope to see you again soon. \n")
+        print("Thank you for visiting Trendy Threads!")
+        print("We appreciate your business and hope to see you again soon. ")
         break
 
     else:
-        print("\n Invalid choice. Please enter a number between 1 and 6.\n")
+        print("Invalid choice. Please enter a number between 1 and 6.")
         time.sleep(1)
 
